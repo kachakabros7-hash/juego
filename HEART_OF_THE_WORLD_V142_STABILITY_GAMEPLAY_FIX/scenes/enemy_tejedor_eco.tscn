@@ -1,0 +1,210 @@
+[gd_scene format=3 uid="uid://bni5oa3atod2"]
+
+[ext_resource type="Script" uid="uid://c5h5jvnxi1p2x" path="res://scripts/enemies/enemy_tejedor_eco.gd" id="1_71fxq"]
+[ext_resource type="Texture2D" uid="uid://bdn5uvwkbtid6" path="res://assets/Sombra_Musgo_SpritePack_Godot/attack_01.png" id="2_yc3bl"]
+[ext_resource type="Texture2D" uid="uid://bad8ggdmgl78p" path="res://assets/Sombra_Musgo_SpritePack_Godot/attack_02.png" id="3_snmrn"]
+[ext_resource type="Texture2D" uid="uid://bdplkvts3ii" path="res://assets/Sombra_Musgo_SpritePack_Godot/attack_03.png" id="4_n5yd4"]
+[ext_resource type="Texture2D" uid="uid://cc23vmjeap7dj" path="res://assets/Sombra_Musgo_SpritePack_Godot/attack_04.png" id="5_0ywir"]
+[ext_resource type="Texture2D" uid="uid://c8a5k274ne0rp" path="res://assets/Sombra_Musgo_SpritePack_Godot/attack_05.png" id="6_8736n"]
+[ext_resource type="Texture2D" uid="uid://6e8pphmoe6bh" path="res://assets/Sombra_Musgo_SpritePack_Godot/attack_06.png" id="7_amd62"]
+[ext_resource type="Texture2D" uid="uid://bb7ikkkps47xq" path="res://assets/Sombra_Musgo_SpritePack_Godot/attack_07.png" id="8_tpa7a"]
+[ext_resource type="Texture2D" uid="uid://cbwv1sdh6x5pf" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_01.png" id="9_w2uxp"]
+[ext_resource type="Texture2D" uid="uid://bg5s54n57u5bn" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_02.png" id="10_s1m70"]
+[ext_resource type="Texture2D" uid="uid://b26fd7thmrqu0" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_03.png" id="11_7t2yu"]
+[ext_resource type="Texture2D" uid="uid://bnfp1whhyroes" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_04.png" id="12_mxdt1"]
+[ext_resource type="Texture2D" uid="uid://b5mx83nurdv4r" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_05.png" id="13_w2dl3"]
+[ext_resource type="Texture2D" uid="uid://cahrf51cdgd3u" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_06.png" id="14_at4hm"]
+[ext_resource type="Texture2D" uid="uid://do478ofiq3715" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_07.png" id="15_0u1gk"]
+[ext_resource type="Texture2D" uid="uid://by6810xprj2cu" path="res://assets/Sombra_Musgo_SpritePack_Godot/death_08.png" id="16_0pyua"]
+[ext_resource type="Texture2D" uid="uid://c6jdnowanyb5l" path="res://assets/Sombra_Musgo_SpritePack_Godot/idle_01.png" id="17_u5kvr"]
+[ext_resource type="Texture2D" uid="uid://dygha675p8we3" path="res://assets/Sombra_Musgo_SpritePack_Godot/idle_02.png" id="18_hy6og"]
+[ext_resource type="Texture2D" uid="uid://chx5xv2u1in6a" path="res://assets/Sombra_Musgo_SpritePack_Godot/idle_03.png" id="19_4sdt2"]
+[ext_resource type="Texture2D" uid="uid://3udvbdrlxxm7" path="res://assets/Sombra_Musgo_SpritePack_Godot/idle_04.png" id="20_b0ac3"]
+[ext_resource type="Texture2D" uid="uid://clmknl2phlhw6" path="res://assets/Sombra_Musgo_SpritePack_Godot/idle_05.png" id="21_di1e5"]
+[ext_resource type="Texture2D" uid="uid://fq5ketngcdj7" path="res://assets/Sombra_Musgo_SpritePack_Godot/idle_06.png" id="22_5i6hp"]
+[ext_resource type="Texture2D" uid="uid://dn8e6wsfcyhjg" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_01.png" id="23_fy3hm"]
+[ext_resource type="Texture2D" uid="uid://cit5si42q80lv" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_02.png" id="24_u0co7"]
+[ext_resource type="Texture2D" uid="uid://d2lr6w3bdia47" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_03.png" id="25_rir1i"]
+[ext_resource type="Texture2D" uid="uid://ck1agk261lveb" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_04.png" id="26_unuga"]
+[ext_resource type="Texture2D" uid="uid://cvsbgcphpuw4r" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_05.png" id="27_2p70p"]
+[ext_resource type="Texture2D" uid="uid://c01wej4fhgx55" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_06.png" id="28_6wdfl"]
+[ext_resource type="Texture2D" uid="uid://4ekyt1ucup03" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_07.png" id="29_5xk18"]
+[ext_resource type="Texture2D" uid="uid://bwmbwi2ebralt" path="res://assets/Sombra_Musgo_SpritePack_Godot/run_08.png" id="30_jxmwc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qe4n8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yc3bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_snmrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n5yd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0ywir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8736n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_amd62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tpa7a")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_w2uxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_s1m70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7t2yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mxdt1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_w2dl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_at4hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_0u1gk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_0pyua")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_u5kvr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_hy6og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4sdt2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_b0ac3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_di1e5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_5i6hp")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_fy3hm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_u0co7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rir1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_unuga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_2p70p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_6wdfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_5xk18")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_jxmwc")
+}],
+"loop": 0,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sau36"]
+radius = 42.0
+height = 96.0
+
+[sub_resource type="StyleBoxFlat" id="EnemyHealthBg"]
+bg_color = Color(0.03, 0.02, 0.05, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.15, 0.1, 0.22, 0.95)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="EnemyHealthFill"]
+bg_color = Color(0.78, 0.27, 0.42, 0.95)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b2hyj"]
+radius = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4jwhw"]
+size = Vector2(116, 72)
+
+[node name="TejedorEco" type="CharacterBody2D" unique_id=673803872]
+collision_layer = 3
+collision_mask = 1
+script = ExtResource("1_71fxq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1770517513]
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_qe4n8")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=171009380]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_sau36")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=667362478]
+offset_left = -30.0
+offset_top = -48.0
+offset_right = 30.0
+offset_bottom = -40.0
+theme_override_styles/background = SubResource("EnemyHealthBg")
+theme_override_styles/fill = SubResource("EnemyHealthFill")
+show_percentage = false
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=958373702]
+collision_layer = 7
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=144826540]
+position = Vector2(0, 15)
+shape = SubResource("CircleShape2D_b2hyj")
+
+[node name="AttackArea" type="Area2D" parent="." unique_id=628634055]
+collision_layer = 15
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1360842848]
+position = Vector2(64, 8)
+shape = SubResource("RectangleShape2D_4jwhw")

@@ -1,0 +1,14 @@
+HEART OF THE WORLD — V108 ESTABLE
+
+Base: V107 MetSys integrado.
+
+Cambios de estabilización:
+- Player: usa el player.gd proporcionado por el usuario como base estable.
+- GameState: señal jefe_derrotado renombrada a jefe_derrotado_emitido para evitar conflicto con la función jefe_derrotado().
+- PauseManager: sin lambdas inline; callbacks separados y comprobaciones seguras.
+- Enemy Ambush/Elite: corregida llamada a _aplicar_gravedad().
+- Se eliminó .godot para forzar una importación limpia en Godot 4.7.
+- Se conserva MetSys y la estructura de 12 zonas.
+- No se eliminaron escenas del juego.
+
+Nota: esta versión está preparada para que Godot 4.7 regenere su caché. La comprobación final de parseo debe hacerse al abrirla en el editor Godot 4.7, porque este entorno no incluye el ejecutable de Godot.

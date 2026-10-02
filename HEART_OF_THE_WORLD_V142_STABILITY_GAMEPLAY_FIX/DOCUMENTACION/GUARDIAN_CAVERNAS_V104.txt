@@ -1,0 +1,57 @@
+HEART OF THE WORLD — GUARDIÁN DE CAVERNAS OLVIDADAS
+V104
+
+NOMBRE:
+Guardián de la Piedra
+
+CONCEPTO:
+Una criatura antigua formada por piedra erosionada, cristales internos y raíces
+fosilizadas. No es malvada: protege el acceso a las capas profundas porque cree
+que la memoria de la caverna debe permanecer intacta.
+
+ARENA:
+Cámara circular dentro de Cavernas Olvidadas.
+Entrada por la ruta principal.
+Salida posterior hacia Minas Abandonadas.
+
+FASE 1 — PESO DE LA PIEDRA
+- Golpe de suelo.
+- Embestida corta.
+- Fragmentos de roca que caen desde el techo.
+- Ventanas claras para contraatacar.
+
+FASE 2 — ECO MINERAL
+- El guardián activa cristales de la arena.
+- Ondas de energía recorren partes del suelo.
+- Alterna golpe de suelo y proyectiles lentos.
+- Aumenta ligeramente la movilidad.
+
+FASE 3 — MEMORIA ROTA
+- La arena queda parcialmente alterada.
+- Combina golpe, embestida y ondas.
+- Ataques más frecuentes, pero siempre telegráficos.
+- Al quedar con poca vida, detiene el combate antes de morir y muestra
+  que estaba protegiendo un recuerdo del mundo.
+
+RECOMPENSA:
+- Fragmento luminoso del Corazón.
+- Monedas.
+- Acceso permanente a la salida de Cavernas.
+- Habilidad propuesta: ECO DE PIEDRA.
+
+ECO DE PIEDRA:
+Permite activar resonancias minerales antiguas para revelar ciertos secretos
+y mecanismos del mundo.
+
+CONTINUIDAD NARRATIVA:
+El guardián no es un villano clásico. Después del enfrentamiento, Misha
+comprende que algunas criaturas protegen heridas antiguas, igual que las
+personas protegen sus recuerdos.
+
+REGLAS:
+- No crear NPC adicional.
+- No modificar Luma.
+- No modificar las animaciones de Misha.
+- No añadir una zona 13.
+- Mantener guardado, mapa y habilidades existentes.
+- La derrota debe persistir en la partida.

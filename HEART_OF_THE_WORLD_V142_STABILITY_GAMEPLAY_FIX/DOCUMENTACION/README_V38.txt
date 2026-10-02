@@ -1,0 +1,1 @@
+v38 basada exclusivamente en v35/v37. Corrección robusta de visibilidad del jugador y cámara inicial. Se fuerza la visibilidad del personaje y se habilita/actualiza la cámara tras el spawn. No se modifica el sistema de movimiento.

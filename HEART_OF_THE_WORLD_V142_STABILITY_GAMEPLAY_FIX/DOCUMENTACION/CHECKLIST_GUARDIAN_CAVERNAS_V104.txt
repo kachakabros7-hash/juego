@@ -1,0 +1,21 @@
+V104 — Checklist del Guardián de la Piedra
+
+[OK] Diseño de 3 fases definido.
+[OK] Arena y recompensa definidas.
+[OK] Habilidad Eco de Piedra definida.
+[OK] Conexión narrativa con el Corazón definida.
+[OK] Misha permanece sin cambios.
+[OK] Luma permanece sin cambios.
+[OK] Sistema de guardado existente debe conservarse.
+[OK] El mapa de 12 zonas debe conservarse.
+
+PENDIENTE DE INTEGRACIÓN RUNTIME:
+- Instanciar escena del boss usando el script/base de boss ya existente.
+- Conectar HP, daño, hitboxes y proyectiles a las APIs existentes.
+- Registrar derrota en GameState/save.
+- Crear pickup de Eco de Piedra.
+- Abrir la salida a Minas Abandonadas al completar el combate.
+
+NOTA:
+Esta etapa deja el diseño listo sin sustituir scripts funcionales a ciegas.
+Godot no se ejecutó en este entorno.

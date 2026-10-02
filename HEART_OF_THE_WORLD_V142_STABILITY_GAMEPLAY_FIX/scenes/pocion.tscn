@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/pocion.gd" id="1_pocion"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pocion"]
+radius = 24.0
+
+[node name="Pocion" type="Area2D"]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1_pocion")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pocion")

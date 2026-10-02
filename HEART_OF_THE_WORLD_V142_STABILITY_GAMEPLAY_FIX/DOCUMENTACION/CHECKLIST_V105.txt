@@ -1,0 +1,17 @@
+V105 — Checklist
+
+[OK] V104 como base.
+[OK] Diseño del boss conservado.
+[OK] 3 fases definidas para runtime.
+[OK] 900 HP definido.
+[OK] Barra de vida requerida.
+[OK] Ataques y recompensas definidos.
+[OK] Misha intacta.
+[OK] Luma intacta.
+[OK] Sistemas existentes deben conservarse.
+
+PENDIENTE:
+- Instanciar la escena real del boss con las APIs concretas del proyecto.
+- Conectar GameState/save con la derrota.
+- Colocar el boss físicamente en la arena.
+- Verificar la escena en Godot.

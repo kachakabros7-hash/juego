@@ -1,0 +1,13 @@
+res://scripts/enemies/enemy_basic.gd
+res://scripts/items/cristal.gd
+res://scripts/items/habilidad_pickup.gd
+res://scripts/items/pocion.gd
+res://scripts/items/recompensa.gd
+res://scripts/items/recompensa_especial.gd
+res://scripts/map/map_display.gd
+res://scripts/player/player.gd
+res://scripts/rooms/checkpoint.gd
+res://scripts/rooms/room_transition.gd
+res://scripts/rooms/secret_zone.gd
+res://scripts/shop/tienda.gd
+res://scripts/ui/main_menu.gd

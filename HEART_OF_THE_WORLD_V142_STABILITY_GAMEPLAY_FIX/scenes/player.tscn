@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://cooa0oa21ooyh"]
+
+[ext_resource type="Script" uid="uid://bbr8r4avhloqk" path="res://scripts/player/player.gd" id="1_smehm"]
+[ext_resource type="Script" uid="uid://dx1d5vrkpmtm6" path="res://scripts/player/player_visual.gd" id="8_visual"]
+[ext_resource type="Script" uid="uid://c4672jiqgvk61" path="res://scripts/player/ranged_attack.gd" id="12_ranged"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_1.png" id="tex_56"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_2.png" id="tex_57"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_3.png" id="tex_58"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_4.png" id="tex_59"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_5.png" id="tex_60"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_6.png" id="tex_61"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_7.png" id="tex_62"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_8.png" id="tex_63"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_9.png" id="tex_64"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_10.png" id="tex_65"]
+[ext_resource type="Texture2D" path="res://assets/Warrior/Individual Sprite/Death-Effect/Warrior_Death_11.png" id="tex_66"]
+
+[ext_resource type="Script" path="res://scripts/player/gameplay_systems.gd" id="13_gameplay"]
+[ext_resource type="SpriteFrames" path="res://resources/luneblade_player_frames.tres" id="14_luneblade"]
+
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5h11f"]
+radius = 22.0
+height = 56.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bx8n8"]
+size = Vector2(60, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack_shaia"]
+size = Vector2(105, 68)
+
+[sub_resource type="StyleBoxFlat" id="HealthBg"]
+bg_color = Color(0.035, 0.03, 0.055, 0.94)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.52, 0.43, 0.68, 0.85)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="HealthFill"]
+bg_color = Color(0.76, 0.3, 0.48, 0.97)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.67, 0.82, 0.48)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="Player" type="CharacterBody2D" unique_id=1686967578 groups=["player"]]
+z_index = 100
+script = ExtResource("1_smehm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1367585452]
+shape = SubResource("CapsuleShape2D_5h11f")
+
+[node name="VisualFX" type="Node2D" parent="." unique_id=348245814]
+z_index = -1
+script = ExtResource("8_visual")
+
+[node name="MishaVisual" type="AnimatedSprite2D" parent="." unique_id=1655136234]
+z_index = 1
+position = Vector2(0, -117)
+scale = Vector2(1, 1)
+sprite_frames = ExtResource("14_luneblade")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=739659403]
+
+[node name="JumpBufferTimer" type="Timer" parent="." unique_id=908822466]
+
+[node name="InvulnerabilityTimer" type="Timer" parent="." unique_id=1760946050]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=904156398]
+limit_left = 0
+limit_top = 0
+limit_right = 4100
+limit_bottom = 1400
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="AreaAtaque" type="Area2D" parent="." unique_id=679594921]
+position = Vector2(58, 58)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaAtaque" unique_id=1533282527]
+shape = SubResource("RectangleShape2D_attack_shaia")
+
+[node name="AreaParry" type="Area2D" parent="." unique_id=2087654321]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaParry" unique_id=2087654322]
+scale = Vector2(1.35, 1.1)
+shape = SubResource("RectangleShape2D_bx8n8")
+
+[node name="RangedAttack" type="Node" parent="." unique_id=2087654330]
+script = ExtResource("12_ranged")
+
+[node name="GameplaySystems" type="Node" parent="." unique_id=2087654340]
+script = ExtResource("13_gameplay")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1267690802]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=1290909012]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 340.0
+offset_bottom = 68.0
+theme_override_styles/background = SubResource("HealthBg")
+theme_override_styles/fill = SubResource("HealthFill")
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer" unique_id=1150227525]
+offset_left = 48.0
+offset_top = 12.0
+offset_right = 160.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.94, 0.9, 1, 0.9)
+theme_override_colors/font_shadow_color = Color(0.02, 0.01, 0.05, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 18
+text = "MISHA  ·  VIDA"
+
+[node name="AbilityLabel" type="Label" parent="CanvasLayer" unique_id=863058418]
+offset_left = 40.0
+offset_top = 116.0
+offset_right = 780.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0.65, 0.78, 0.9, 0.95)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 14
+text = "HABILIDADES · SHIFT DASH · ESPACIO DOBLE SALTO · V IMPULSO DE RAÍZ"
+
+[node name="ControlsLabel" type="Label" parent="CanvasLayer" unique_id=604004303]
+offset_left = 40.0
+offset_top = 188.0
+offset_right = 900.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0.78, 0.78, 0.88, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 13
+text = "J ATAQUE · K DISTANCIA · Q/E HABILIDAD · R ESPECIAL · L PARRY · M MAPA · ESC PAUSA"
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer" unique_id=617725539]
+visible = false
+offset_left = 40.0
+offset_top = 150.0
+offset_right = 340.0
+offset_bottom = 184.0
+theme_override_colors/font_color = Color(0.85, 0.95, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 20
+text = "PARADA"
+
+[node name="CoinLabel" type="Label" parent="CanvasLayer" unique_id=483439055]
+offset_left = 40.0
+offset_top = 78.0
+offset_right = 300.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.92, 0.88, 0.98, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.75)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "◈  MONEDAS  0"
+
+[connection signal="body_entered" from="AreaAtaque" to="." method="_on_area_ataque_body_entered"]

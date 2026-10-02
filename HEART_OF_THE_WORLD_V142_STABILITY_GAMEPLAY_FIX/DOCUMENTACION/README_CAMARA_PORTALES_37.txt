@@ -1,0 +1,1 @@
+v37 basada en v36. Corrección de cámara inicial para mantener a Misha visible en el borde izquierdo y rediseño de portal sin marcador circular central. No se modificó el movimiento del jugador.

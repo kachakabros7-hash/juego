@@ -1,0 +1,424 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_ranged.tscn" id="90_enemy_ranged"]
+[ext_resource type="PackedScene" path="res://scenes/habilidad_pickup.tscn" id="4_ability"]
+[ext_resource type="Script" path="res://scripts/rooms/room_transition.gd" id="2_transition"]
+[ext_resource type="Script" path="res://scripts/rooms/secret_zone.gd" id="3_secret"]
+[ext_resource type="PackedScene" path="res://scenes/recompensa_especial.tscn" id="4_special"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_basic.tscn" id="10_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/pocion.tscn" id="11_pocion"]
+
+[ext_resource type="PackedScene" path="res://scenes/enemy_cave.tscn" id="20_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_cave.tscn" id="21_enemy"]
+[ext_resource type="Script" path="res://scripts/rooms/room_polish.gd" id="22_polish"]
+[ext_resource type="Script" path="res://scripts/rooms/platform_visuals.gd" id="99_platforms"]
+[ext_resource type="Script" path="res://scripts/rooms/exit_visuals.gd" id="98_exit_visuals"]
+[ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="31_checkpoint"]
+[ext_resource type="Script" path="res://scripts/rooms/world_route.gd" id="world_route"]
+[ext_resource type="Script" path="res://scripts/rooms/zone_level_design.gd" id="v70_level"]
+[sub_resource type="RectangleShape2D" id="Ground"]
+size = Vector2(4100, 100)
+
+[sub_resource type="RectangleShape2D" id="Wall"]
+size = Vector2(100, 1500)
+
+[sub_resource type="RectangleShape2D" id="P1"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P2"]
+size = Vector2(350, 50)
+
+[sub_resource type="RectangleShape2D" id="P3"]
+size = Vector2(450, 50)
+
+[sub_resource type="RectangleShape2D" id="P4"]
+size = Vector2(350, 50)
+
+[sub_resource type="RectangleShape2D" id="P5"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P6"]
+size = Vector2(380, 50)
+
+[sub_resource type="RectangleShape2D" id="P7"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P8"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="Exit"]
+size = Vector2(80, 260)
+
+[sub_resource type="RectangleShape2D" id="Secret"]
+size = Vector2(180, 220)
+
+
+[sub_resource type="RectangleShape2D" id="WorldGate0_4393"]
+size = Vector2(90, 180)
+[ext_resource type="PackedScene" path="res://scenes/enemy_basic.tscn" id="v82_sombra"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_caparazon_piedra.tscn" id="v82_cap"]
+
+[ext_resource type="Script" path="res://scripts/rooms/cavernas_atmosphere.gd" id="50_cavernas"]
+[ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="met_sys_room"]
+[node name="Room" type="Node2D"]
+[node name="CavernasAtmosphere" type="Node2D" parent="."]
+script = ExtResource("50_cavernas")
+
+[node name="V70LevelDesign" type="Node2D" parent="."]
+script = ExtResource("v70_level")
+
+[node name="RoomPolish" type="Node2D" parent="."]
+script = ExtResource("22_polish")
+[node name="ZoneName" type="Label" parent="."]
+position = Vector2(89.6000, 204.8000)
+text = "CAVERNAS"
+theme_override_font_sizes/font_size = 42
+z_index = 10
+
+[node name="Objects" type="Node2D" parent="."]
+script = ExtResource("99_platforms")
+
+[node name="Ground" type="StaticBody2D" parent="Objects"]
+position = Vector2(2096.0000, 1400.0000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Ground"]
+shape = SubResource("Ground")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Ground"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-2050, -50, 2050, -50, 2050, 50, -2050, 50)
+
+[node name="WallLeft" type="StaticBody2D" parent="Objects"]
+position = Vector2(50.0000, 795.2000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallLeft"]
+shape = SubResource("Wall")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/WallLeft"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.22)
+polygon = PackedVector2Array(-50, -750, 50, -750, 50, 750, -50, 750)
+
+[node name="WallRight" type="StaticBody2D" parent="Objects"]
+position = Vector2(4142.0000, 795.2000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallRight"]
+shape = SubResource("Wall")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/WallRight"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.22)
+polygon = PackedVector2Array(-50, -750, 50, -750, 50, 750, -50, 750)
+
+[node name="Platform01" type="StaticBody2D" parent="Objects"]
+position = Vector2(650.0, 900.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform02" type="StaticBody2D" parent="Objects"]
+position = Vector2(1150.0, 650.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform03" type="StaticBody2D" parent="Objects"]
+position = Vector2(1650.0, 420.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform04" type="StaticBody2D" parent="Objects"]
+position = Vector2(2200.0, 650.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform05" type="StaticBody2D" parent="Objects"]
+position = Vector2(2750.0, 420.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform06" type="StaticBody2D" parent="Objects"]
+position = Vector2(3250.0, 650.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform07" type="StaticBody2D" parent="Objects"]
+position = Vector2(3700.0, 900.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform08" type="StaticBody2D" parent="Objects"]
+position = Vector2(900.0, 1100.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform09" type="StaticBody2D" parent="Objects"]
+position = Vector2(1400.0, 850.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform10" type="StaticBody2D" parent="Objects"]
+position = Vector2(2000.0, 1000.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform11" type="StaticBody2D" parent="Objects"]
+position = Vector2(2600.0, 800.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform12" type="StaticBody2D" parent="Objects"]
+position = Vector2(3200.0, 1100.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform13" type="StaticBody2D" parent="Objects"]
+position = Vector2(4000.0, 700.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform14" type="StaticBody2D" parent="Objects"]
+position = Vector2(4450.0, 500.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform15" type="StaticBody2D" parent="Objects"]
+position = Vector2(4800.0, 850.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Platform16" type="StaticBody2D" parent="Objects"]
+position = Vector2(3500.0, 1200.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform01"]
+shape = SubResource("P1")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform01"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform02"]
+shape = SubResource("P2")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform02"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-175.0, -25.0, 175.0, -25.0, 175.0, 25.0, -175.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform03"]
+shape = SubResource("P3")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform03"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-225.0, -25.0, 225.0, -25.0, 225.0, 25.0, -225.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform04"]
+shape = SubResource("P4")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform04"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-175.0, -25.0, 175.0, -25.0, 175.0, 25.0, -175.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform05"]
+shape = SubResource("P5")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform05"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform06"]
+shape = SubResource("P6")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform06"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-190.0, -25.0, 190.0, -25.0, 190.0, 25.0, -190.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform07"]
+shape = SubResource("P7")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform07"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform08"]
+shape = SubResource("P8")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform08"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyCave03" parent="Enemies" instance=ExtResource("21_enemy")]
+position = Vector2(3284.0000, 1032.8000)
+
+[node name="EnemyCave02" parent="Enemies" instance=ExtResource("90_enemy_ranged")]
+position = Vector2(1172.0000, 1032.8000)
+
+[node name="EnemyCavernas" parent="Enemies" instance=ExtResource("10_enemy")]
+position = Vector2(2228.0000, 1356.8000)
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(1964.0000, 363.2000)
+
+[node name="SpawnLeft" type="Marker2D" parent="."]
+position = Vector2(221.6000, 1227.2000)
+
+[node name="SpawnRight" type="Marker2D" parent="."]
+position = Vector2(3838.4000, 1227.2000)
+
+[node name="SpawnTop" type="Marker2D" parent="."]
+position = Vector2(1964.0000, 593.6000)
+
+[node name="SpawnBottom" type="Marker2D" parent="."]
+position = Vector2(1964.0000, 1227.2000)
+
+[node name="SecretZones" type="Node2D" parent="."]
+
+[node name="Secret01" type="Area2D" parent="SecretZones"]
+position = Vector2(3020.0000, 399.2000)
+collision_layer = 0
+script = ExtResource("3_secret")
+mensaje = "Pasadizo secreto descubierto"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretZones/Secret01"]
+shape = SubResource("Secret")
+
+[node name="Exits" type="Node2D" parent="."]
+script = ExtResource("98_exit_visuals")
+
+[node name="ExitTop" type="Area2D" parent="Exits"]
+position = Vector2(1964.0000, 183.2000)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/bosque_profundidad.tscn"
+spawn_destino = "SpawnBottom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitTop"]
+shape = SubResource("Exit")
+[node name="Visual" type="Polygon2D" parent="Exits/ExitTop"]
+visible = false
+color = Color(0.2, 1, 0.35, 0.45)
+polygon = PackedVector2Array(-40, -130, 40, -130, 40, 130, -40, 130)
+
+[node name="ExitRight" type="Area2D" parent="Exits"]
+position = Vector2(4023.2000, 795.2000)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/lago_oscuro.tscn"
+habilidad_requerida = "Garra Trepadora"
+spawn_destino = "SpawnLeft"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitRight"]
+shape = SubResource("Exit")
+[node name="Visual" type="Polygon2D" parent="Exits/ExitRight"]
+visible = false
+color = Color(0.2, 1, 0.35, 0.45)
+polygon = PackedVector2Array(-40, -130, 40, -130, 40, 130, -40, 130)
+
+[node name="ExitBottom" type="Area2D" parent="Exits"]
+position = Vector2(1964.0000, 1392.8000)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/cueva_secreta.tscn"
+spawn_destino = "SpawnTop"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitBottom"]
+shape = SubResource("Exit")
+[node name="Visual" type="Polygon2D" parent="Exits/ExitBottom"]
+visible = false
+color = Color(0.2, 1, 0.35, 0.45)
+polygon = PackedVector2Array(-40, -130, 40, -130, 40, 130, -40, 130)
+
+[node name="CofreCavernas" parent="." instance=ExtResource("4_special")]
+position = Vector2(3020.0000, 528.8000)
+tipo = "cofre"
+identificador = "cofre_cavernas_01"
+cantidad_monedas = 20
+
+[node name="PocionCavernas" parent="." instance=ExtResource("11_pocion")]
+position = Vector2(1568.0000, 1356.8000)
+identificador = "pocion_cavernas_01"
+curacion = 30
+
+[node name="HabilidadPickup_mantis_claw" parent="." instance=ExtResource("4_ability")]
+position = Vector2(3086.0000, 651.2000)
+habilidad = "mantis_claw"
+nombre_habilidad = "GARRA TREPADORA"
+descripcion = "Permite deslizarte lentamente por las paredes y rebotar en ellas."
+
+[node name="player" parent="." instance=ExtResource("1_player")]
+position = Vector2(1964.0000, 363.2000)
+
+[node name="BossSpawn" type="Marker2D" parent="."]
+position = Vector2(2096.0000, 1256.0000)
+
+
+[node name="CheckpointExploracion" parent="." instance=ExtResource("31_checkpoint")]
+position = Vector2(1568.0000, 1268.8000)
+identificador = "checkpoint_cavernas"
+mensaje = "REFUGIO DE LA CAVERNA ACTIVADO"
+
+[node name="WorldRoute_0_Z12_CUEVA_SECRETA" type="Area2D" parent="Exits"]
+position = Vector2(3500.0, 303.2)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("world_route")
+escena_destino = "res://scenes/rooms/bosque/cueva_secreta.tscn"
+spawn_destino = "SpawnLeft"
+habilidad_requerida = "Embestida Cristalina"
+nombre_ruta = "Z12 CUEVA SECRETA"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/WorldRoute_0_Z12_CUEVA_SECRETA"]
+shape = SubResource("WorldGate0_4393")
+
+[node name="SombraMusgo_Cavernas" parent="." instance=ExtResource("v82_sombra")]
+position = Vector2(900, 900)
+
+[node name="CaparazonCavernas" parent="." instance=ExtResource("v82_cap")]
+position = Vector2(1250, 900)
+
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform01"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform02"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-175.0, -25.0, 175.0, -25.0, 175.0, 25.0, -175.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform03"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-225.0, -25.0, 225.0, -25.0, 225.0, 25.0, -225.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform04"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-175.0, -25.0, 175.0, -25.0, 175.0, 25.0, -175.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform05"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform06"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-190.0, -25.0, 190.0, -25.0, 190.0, 25.0, -190.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform07"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform08"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="MetSysRoom" parent="." instance=ExtResource("met_sys_room")]

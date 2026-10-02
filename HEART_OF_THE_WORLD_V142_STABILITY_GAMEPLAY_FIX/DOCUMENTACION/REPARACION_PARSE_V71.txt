@@ -1,0 +1,18 @@
+REPARACION V71 - ERRORES DE PARSER
+
+Base: Misha_Corazon_del_Mundo_v70_RangedAttack_Reparado (1).zip
+
+Correcciones principales:
+- scripts/player/ranged_attack.gd:76
+  Se cambio `var dano_base := player.dano_ataque` por
+  `var dano_base: int = int(player.dano_ataque)` para evitar el error
+  de inferencia de tipo mostrado por Godot 4.7.
+- scripts/rooms/route_safety.gd: se hizo explicito el tipo de CameraBounds.
+- scripts/rooms/room_camera_bounds.gd: se hizo explicito el tipo del nodo player.
+
+No se eliminaron sistemas ni escenas.
+
+Nota: el entorno de reparacion no incluye el ejecutable de Godot 4.7.1,
+por lo que la validacion realizada es estatica; el proyecto debe abrirse en
+Godot para confirmar cualquier error de runtime que dependa de recursos o
+scripts cargados por el editor.

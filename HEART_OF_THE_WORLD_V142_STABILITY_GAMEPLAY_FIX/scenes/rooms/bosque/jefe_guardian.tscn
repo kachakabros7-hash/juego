@@ -1,0 +1,284 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/rooms/room_transition.gd" id="2_transition"]
+[ext_resource type="Script" path="res://scripts/rooms/secret_zone.gd" id="3_secret"]
+[ext_resource type="PackedScene" path="res://scenes/cristal.tscn" id="9_cristal"]
+
+[ext_resource type="Script" path="res://scripts/rooms/room_polish.gd" id="10_polish"]
+[ext_resource type="Script" path="res://scripts/rooms/platform_visuals.gd" id="99_platforms"]
+[ext_resource type="Script" path="res://scripts/rooms/exit_visuals.gd" id="98_exit_visuals"]
+[ext_resource type="Script" path="res://scripts/rooms/boss_arena.gd" id="100_boss_arena"]
+[ext_resource type="Script" path="res://scripts/rooms/boss_arena_draw.gd" id="101_boss_draw"]
+[ext_resource type="PackedScene" path="res://scenes/boss_guardian.tscn" id="102_boss"]
+[ext_resource type="Script" path="res://scripts/rooms/world_route.gd" id="world_route"]
+[ext_resource type="Script" path="res://scripts/rooms/zone_level_design.gd" id="v70_level"]
+[ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="met_sys_room"]
+[sub_resource type="RectangleShape2D" id="Ground"]
+size = Vector2(4100, 100)
+
+[sub_resource type="RectangleShape2D" id="Wall"]
+size = Vector2(100, 1500)
+
+[sub_resource type="RectangleShape2D" id="P1"]
+size = Vector2(500, 50)
+
+[sub_resource type="RectangleShape2D" id="P2"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P3"]
+size = Vector2(400, 50)
+
+[sub_resource type="RectangleShape2D" id="P4"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P5"]
+size = Vector2(500, 50)
+
+[sub_resource type="RectangleShape2D" id="P6"]
+size = Vector2(350, 50)
+
+[sub_resource type="RectangleShape2D" id="Exit"]
+size = Vector2(80, 260)
+
+[sub_resource type="RectangleShape2D" id="Secret"]
+size = Vector2(180, 220)
+
+
+[sub_resource type="RectangleShape2D" id="WorldGate0_7132"]
+size = Vector2(90, 180)
+[node name="Room" type="Node2D"]
+[node name="V70LevelDesign" type="Node2D" parent="."]
+script = ExtResource("v70_level")
+
+[node name="RoomPolish" type="Node2D" parent="."]
+script = ExtResource("10_polish")
+
+[node name="BossArenaDraw" type="Node2D" parent="."]
+script = ExtResource("101_boss_draw")
+
+[node name="BossArena" type="Node2D" parent="."]
+script = ExtResource("100_boss_arena")
+[node name="ZoneName" type="Label" parent="."]
+position = Vector2(89.6000, 204.8000)
+text = "JEFE — GUARDIÁN"
+theme_override_font_sizes/font_size = 42
+z_index = 10
+
+[node name="Objects" type="Node2D" parent="."]
+script = ExtResource("99_platforms")
+
+[node name="Ground" type="StaticBody2D" parent="Objects"]
+position = Vector2(2096.0000, 1400.0000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Ground"]
+shape = SubResource("Ground")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Ground"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-2050, -50, 2050, -50, 2050, 50, -2050, 50)
+
+[node name="WallLeft" type="StaticBody2D" parent="Objects"]
+position = Vector2(50.0000, 795.2000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallLeft"]
+shape = SubResource("Wall")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/WallLeft"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.22)
+polygon = PackedVector2Array(-50, -750, 50, -750, 50, 750, -50, 750)
+
+[node name="WallRight" type="StaticBody2D" parent="Objects"]
+position = Vector2(4142.0000, 795.2000)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallRight"]
+shape = SubResource("Wall")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/WallRight"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.22)
+polygon = PackedVector2Array(-50, -750, 50, -750, 50, 750, -50, 750)
+
+[node name="Platform01" type="StaticBody2D" parent="Objects"]
+position = Vector2(760.0, 1120.0)
+[node name="Platform02" type="StaticBody2D" parent="Objects"]
+position = Vector2(1320.0, 980.0)
+[node name="Platform03" type="StaticBody2D" parent="Objects"]
+position = Vector2(1840.0, 1080.0)
+[node name="Platform04" type="StaticBody2D" parent="Objects"]
+position = Vector2(2360.0, 980.0)
+[node name="Platform05" type="StaticBody2D" parent="Objects"]
+position = Vector2(2920.0, 1120.0)
+[node name="Platform06" type="StaticBody2D" parent="Objects"]
+position = Vector2(3420.0, 1020.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform01"]
+shape = SubResource("P1")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform01"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-250.0, -25.0, 250.0, -25.0, 250.0, 25.0, -250.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform02"]
+shape = SubResource("P2")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform02"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform03"]
+shape = SubResource("P3")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform03"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-200.0, -25.0, 200.0, -25.0, 200.0, 25.0, -200.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform04"]
+shape = SubResource("P4")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform04"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform05"]
+shape = SubResource("P5")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform05"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-250.0, -25.0, 250.0, -25.0, 250.0, 25.0, -250.0, 25.0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform06"]
+shape = SubResource("P6")
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform06"]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-175.0, -25.0, 175.0, -25.0, 175.0, 25.0, -175.0, 25.0)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(142.4000, 1227.2000)
+
+[node name="SpawnLeft" type="Marker2D" parent="."]
+position = Vector2(221.6000, 1227.2000)
+
+[node name="SpawnRight" type="Marker2D" parent="."]
+position = Vector2(3838.4000, 1227.2000)
+
+[node name="SpawnTop" type="Marker2D" parent="."]
+position = Vector2(1964.0000, 593.6000)
+
+[node name="SpawnBottom" type="Marker2D" parent="."]
+position = Vector2(1964.0000, 1227.2000)
+
+[node name="SecretZones" type="Node2D" parent="."]
+
+[node name="Secret01" type="Area2D" parent="SecretZones"]
+position = Vector2(1898.0000, 471.2000)
+collision_layer = 0
+script = ExtResource("3_secret")
+mensaje = "ARENA DEL GUARDIÁN"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretZones/Secret01"]
+shape = SubResource("Secret")
+
+[node name="BossGateLeft" type="StaticBody2D" parent="."]
+position = Vector2(149.0000, 1227.2000)
+groups = [&"boss_arena_door"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossGateLeft"]
+shape = SubResource("Exit")
+[node name="Visual" type="Polygon2D" parent="BossGateLeft"]
+color = Color(0.85, 0.16, 0.28, 0.72)
+polygon = PackedVector2Array(-35, -130, 35, -130, 35, 130, -35, 130]
+
+[node name="BossGateRight" type="StaticBody2D" parent="."]
+position = Vector2(4043.0000, 1227.2000)
+groups = [&"boss_arena_door"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossGateRight"]
+shape = SubResource("Exit")
+[node name="Visual" type="Polygon2D" parent="BossGateRight"]
+color = Color(0.85, 0.16, 0.28, 0.72)
+polygon = PackedVector2Array(-35, -130, 35, -130, 35, 130, -35, 130]
+
+[node name="LockMessage" type="Label" parent="."]
+position = Vector2(1818.8000, 384.8000)
+theme_override_colors/font_color = Color(1, 0.55, 0.6, 0.8)
+theme_override_font_sizes/font_size = 22
+text = "ARENA CERRADA"
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+
+[node name="Exits" type="Node2D" parent="."]
+script = ExtResource("98_exit_visuals")
+
+[node name="ExitLeft" type="Area2D" parent="Exits"]
+position = Vector2(50.0000, 1227.2000)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/torre_abismo.tscn"
+spawn_destino = "SpawnRight"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitLeft"]
+shape = SubResource("Exit")
+[node name="Visual" type="Polygon2D" parent="Exits/ExitLeft"]
+visible = false
+color = Color(0.2, 1, 0.35, 0.45)
+polygon = PackedVector2Array(-40, -130, 40, -130, 40, 130, -40, 130)
+
+
+[node name="BossGuardian" parent="." instance=ExtResource("102_boss")]
+position = Vector2(2096.0000, 1256.0000)
+
+[node name="CristalGuardian" parent="." instance=ExtResource("9_cristal")]
+position = Vector2(908.0000, 507.2000)
+identificador = "cristal_guardian"
+[node name="player" parent="." instance=ExtResource("1_player")]
+position = Vector2(142.4000, 1227.2000)
+
+
+
+[node name="WorldRoute_0_Z12_CUEVA_SECRETA" type="Area2D" parent="Exits"]
+position = Vector2(3500.0, 1167.2)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("world_route")
+escena_destino = "res://scenes/rooms/bosque/cueva_secreta.tscn"
+spawn_destino = "SpawnLeft"
+habilidad_requerida = "Paso Umbrío"
+nombre_ruta = "Z12 CUEVA SECRETA"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/WorldRoute_0_Z12_CUEVA_SECRETA"]
+shape = SubResource("WorldGate0_7132")
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform01"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-250.0, -25.0, 250.0, -25.0, 250.0, 25.0, -250.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform02"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform03"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-200.0, -25.0, 200.0, -25.0, 200.0, 25.0, -200.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform04"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-210.0, -25.0, 210.0, -25.0, 210.0, 25.0, -210.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform05"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-250.0, -25.0, 250.0, -25.0, 250.0, 25.0, -250.0, 25.0)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform06"]
+visible = true
+z_index = 1
+color = Color(0.22, 0.48, 0.30, 1)
+polygon = PackedVector2Array(-175.0, -25.0, 175.0, -25.0, 175.0, 25.0, -175.0, 25.0)
+
+[node name="MetSysRoom" parent="." instance=ExtResource("met_sys_room")]

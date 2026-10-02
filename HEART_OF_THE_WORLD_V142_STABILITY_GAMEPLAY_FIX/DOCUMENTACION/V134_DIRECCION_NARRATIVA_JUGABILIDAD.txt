@@ -1,0 +1,51 @@
+HEART OF THE WORLD — V134: DIRECCIÓN NARRATIVA Y DE JUGABILIDAD
+===============================================================
+
+OBJETIVO
+Combinar exploración metroidvania, combate preciso y progresión por habilidades con una historia centrada en personajes, humor ocasional, misterio y decisiones con consecuencias. La referencia es tonal y estructural; no se copian personajes, escenas, diálogos, música ni recursos de Hollow Knight o Undertale.
+
+IDENTIDAD
+Título: Heart of the World
+Protagonista: Misha / Luneblade
+Premisa: El Corazón del Mundo está perdiendo sus latidos. Cuando una zona se apaga, no solo mueren sus plantas: sus habitantes empiezan a olvidar nombres, promesas y partes de su propia historia. Misha busca el origen del silencio y descubre que el mundo no está dividido simplemente entre buenos y malos.
+
+PILARES DE JUGABILIDAD
+1. Movimiento deliberado: aceleración y frenado legibles, salto controlable, ventanas de tolerancia al borde y al pulsar salto, dash con recuperación clara.
+2. Combate legible: anticipación visual de ataques, ventanas para esquivar/parar, impactos con respuesta clara y enemigos con patrones reconocibles.
+3. Exploración interconectada: las habilidades abren rutas nuevas y también conectan atajos con zonas ya visitadas. Cada bloqueo debe comunicar qué habilidad parece necesitarse.
+4. Curiosidad recompensada: habitaciones opcionales, recuerdos, personajes que cambian sus diálogos y detalles del escenario que cuentan historia sin texto obligatorio.
+5. Consecuencias humanas: el jugador puede escuchar, ayudar, ignorar o combatir cuando el diseño lo permita. Las consecuencias deben mostrarse en diálogos, estados del mundo, recompensas o encuentros posteriores; no solo en una barra moral.
+
+TONO NARRATIVO
+- Misterio melancólico con momentos cálidos y humor extraño, sin convertir todo en una broma.
+- Los personajes tienen deseos concretos, contradicciones y razones para desconfiar.
+- Evitar explicar todo de golpe. Alternar diálogo breve, recuerdos opcionales, cambios ambientales y descubrimientos del jugador.
+- La compasión no siempre resuelve un conflicto de inmediato; la violencia tampoco debe tratarse como una elección sin consecuencias.
+
+ARCO PROPUESTO
+ACTO I — El primer latido: Misha despierta en el Bosque del Amanecer y conoce a Luma. Las criaturas cercanas actúan con miedo. El objetivo inicial enseña combate y observación.
+ACTO II — Lo que las raíces recuerdan: nuevas zonas revelan recuerdos incompatibles sobre el origen del apagón. NPC conocidos reaccionan a acciones previas.
+ACTO III — La voz bajo el mundo: Misha descubre que el Corazón no es una máquina que simplemente se repara. Su destino depende de qué vínculos se hayan conservado y de qué verdades se hayan afrontado.
+
+SISTEMAS NARRATIVOS A IMPLEMENTAR POR ETAPAS
+A. Registro de encuentros: guardar qué NPC se conocieron y qué eventos ocurrieron.
+B. Diálogo condicional: líneas distintas según misión, recuerdos y acciones previas.
+C. Decisiones explícitas solo cuando el jugador tenga información suficiente; mostrar consecuencias de forma comprensible.
+D. Encuentros alternativos: algunos enemigos pueden retirarse, hablar o cambiar su comportamiento tras ciertas acciones. No forzar una solución pacífica para todos.
+E. Finales basados en hechos del recorrido, no en una puntuación moral invisible.
+
+CAMBIOS INCLUIDOS EN V134
+- Se reescribieron los diálogos de Luma para introducir misterio, empatía y una visión menos binaria de los conflictos.
+- Se amplió el texto inicial de la primera memoria para reforzar el motivo del latido y anticipar una voz desconocida.
+- Se añadió este documento de dirección para orientar futuras iteraciones.
+- Se conservaron los nombres de funciones, las señales y el flujo de misiones existente para reducir el riesgo de romper la escena.
+
+PRÓXIMAS MEJORAS TÉCNICAS RECOMENDADAS
+1. Probar movimiento y combate en Godot y ajustar valores con mediciones, no a ciegas.
+2. Añadir una capa de variables narrativas persistentes en GameState/SaveManager.
+3. Extender DialogueUI para elecciones con botones/teclas y callback de resultado.
+4. Crear un encuentro piloto con dos resoluciones y comprobar que el mundo refleja la decisión.
+5. Revisar cada transición, checkpoint, colisión, entrada y guardado en ejecución real.
+
+NOTA DE VALIDACIÓN
+Esta versión se ha empaquetado y comprobado como archivo ZIP. No se ha ejecutado dentro del motor Godot en este entorno; por tanto, los cambios narrativos no equivalen a una validación completa de runtime.

@@ -1,0 +1,422 @@
+[gd_scene format=3 uid="uid://bcdxyasqt2nws"]
+
+[ext_resource type="PackedScene" uid="uid://cooa0oa21ooyh" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://na7nsdxsqhvk" path="res://scripts/rooms/room_transition.gd" id="2_transition"]
+[ext_resource type="Script" uid="uid://brtbfukqdjbkt" path="res://scripts/rooms/secret_zone.gd" id="3_secret"]
+[ext_resource type="Texture2D" uid="uid://dari48dit3vsk" path="res://assets/ChatGPT Image 14 sept 2026, 19_36_02.png" id="3_yymlf"]
+[ext_resource type="Script" uid="uid://bst0veb5t7apw" path="res://scripts/rooms/route_safety.gd" id="9_safety"]
+[ext_resource type="Script" uid="uid://bo1ug8rnja73g" path="res://scripts/rooms/room_polish.gd" id="22_polish"]
+[ext_resource type="Script" uid="uid://c7l0rca3mr6d5" path="res://scripts/rooms/exit_visuals.gd" id="98_exit_visuals"]
+[ext_resource type="Script" uid="uid://bluv0d78c4pi3" path="res://scripts/rooms/platform_visuals.gd" id="99_platforms"]
+[ext_resource type="Script" uid="uid://bvmw831r8cjhm" path="res://scripts/rooms/room_camera_bounds.gd" id="101_cam"]
+[ext_resource type="Script" uid="uid://b5gh2oeacw2j8" path="res://scripts/rooms/route_navigation.gd" id="102_nav"]
+[ext_resource type="PackedScene" path="res://scenes/habilidad_pickup.tscn" id="ability_pickup_v69"]
+[ext_resource type="PackedScene" path="res://scenes/enemy_basic.tscn" id="enemy_basic_v118"]
+[ext_resource type="Script" uid="uid://cm3ma8mgr1l03" path="res://scripts/rooms/zone_level_design.gd" id="v70_level"]
+[ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="v87_checkpoint"]
+[ext_resource type="Script" uid="uid://dtxham0foypg7" path="res://scripts/rooms/world_route.gd" id="world_route"]
+[ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="met_sys_room"]
+[ext_resource type="Script" path="res://scripts/items/heart_fragment.gd" id="heart_fragment_script"]
+[ext_resource type="Script" path="res://scripts/rooms/bosque_restoration.gd" id="bosque_restoration_script"]
+[ext_resource type="Script" path="res://scripts/LoreNote.gd" id="lore_note_script"]
+[ext_resource type="PackedScene" path="res://scenes/NPC.tscn" id="luma_npc"]
+
+[sub_resource type="RectangleShape2D" id="Ground"]
+size = Vector2(4100, 100)
+
+[sub_resource type="RectangleShape2D" id="Wall"]
+size = Vector2(100, 1500)
+
+[sub_resource type="RectangleShape2D" id="P1"]
+size = Vector2(500, 50)
+
+[sub_resource type="RectangleShape2D" id="P2"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P3"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P4"]
+size = Vector2(460, 50)
+
+[sub_resource type="RectangleShape2D" id="P5"]
+size = Vector2(420, 50)
+
+[sub_resource type="RectangleShape2D" id="P6"]
+size = Vector2(360, 50)
+
+[sub_resource type="RectangleShape2D" id="Secret"]
+size = Vector2(180, 220)
+
+[sub_resource type="RectangleShape2D" id="Exit"]
+size = Vector2(80, 260)
+
+[sub_resource type="RectangleShape2D" id="WorldGate0_8841"]
+size = Vector2(90, 180)
+
+[sub_resource type="CircleShape2D" id="HeartFragmentShape"]
+radius = 34.0
+
+[sub_resource type="CircleShape2D" id="LoreNoteShape"]
+radius = 34.0
+
+[node name="Room" type="Node2D" unique_id=1725687273]
+
+[node name="V70LevelDesign" type="Node2D" parent="." unique_id=1535431942]
+script = ExtResource("v70_level")
+
+[node name="RoomPolish" type="Node2D" parent="." unique_id=1908194281]
+script = ExtResource("22_polish")
+
+[node name="RouteSafety" type="Node" parent="." unique_id=859278824]
+script = ExtResource("9_safety")
+limite_caida = 260.0
+
+[node name="ZoneName" type="Label" parent="." unique_id=221594463]
+z_index = 10
+offset_left = 74.0
+offset_top = 72.0
+offset_right = 900.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.94, 0.96, 1, 0.92)
+theme_override_colors/font_shadow_color = Color(0.02, 0.03, 0.05, 0.9)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_font_sizes/font_size = 30
+text = "BOSQUE ENTRADA — INICIO"
+
+[node name="CameraBounds" type="Node" parent="." unique_id=1987856431]
+script = ExtResource("101_cam")
+limit_right = 4200
+limit_bottom = 1500
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1360118579]
+position = Vector2(2131.5, 768)
+scale = Vector2(2.1043875, 2.3051705)
+texture = ExtResource("3_yymlf")
+
+[node name="Navigation" type="Node2D" parent="." unique_id=366247682]
+script = ExtResource("102_nav")
+room_height = 1500.0
+directions = Array[String](["Z01 INICIO", "Z02 RAÍCES PROFUNDAS"])
+
+[node name="Objects" type="Node2D" parent="." unique_id=129764135]
+script = ExtResource("99_platforms")
+
+[node name="Ground" type="StaticBody2D" parent="Objects" unique_id=1691497102]
+position = Vector2(2096, 1400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Ground" unique_id=1820823889]
+shape = SubResource("Ground")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Ground" unique_id=472273173]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-2050, -50, 2050, -50, 2050, 50, -2050, 50)
+
+[node name="WallLeft" type="StaticBody2D" parent="Objects" unique_id=597533263]
+position = Vector2(50, 795.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallLeft" unique_id=1011697397]
+shape = SubResource("Wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/WallLeft" unique_id=1635062650]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.22)
+polygon = PackedVector2Array(-50, -750, 50, -750, 50, 750, -50, 750)
+
+[node name="WallRight" type="StaticBody2D" parent="Objects" unique_id=1262119774]
+position = Vector2(4142, 795.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallRight" unique_id=786854797]
+shape = SubResource("Wall")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/WallRight" unique_id=1521542945]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.22)
+polygon = PackedVector2Array(-50, -750, 50, -750, 50, 750, -50, 750)
+
+[node name="Platform01" type="StaticBody2D" parent="Objects" unique_id=2048517353]
+position = Vector2(900, 930)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform01" unique_id=1597267901]
+shape = SubResource("P1")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform01" unique_id=764176550]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-250, -25, 250, -25, 250, 25, -250, 25)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform01" unique_id=529663220]
+z_index = 1
+color = Color(0.22, 0.48, 0.3, 1)
+polygon = PackedVector2Array(-250, -25, 250, -25, 250, 25, -250, 25)
+
+[node name="Platform02" type="StaticBody2D" parent="Objects" unique_id=666383069]
+position = Vector2(1540, 720)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform02" unique_id=503249594]
+shape = SubResource("P2")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform02" unique_id=430858701]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210, -25, 210, -25, 210, 25, -210, 25)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform02" unique_id=2053101430]
+z_index = 1
+color = Color(0.22, 0.48, 0.3, 1)
+polygon = PackedVector2Array(-210, -25, 210, -25, 210, 25, -210, 25)
+
+[node name="Platform03" type="StaticBody2D" parent="Objects" unique_id=402859187]
+position = Vector2(1800, 600)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform03" unique_id=945912185]
+shape = SubResource("P3")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform03" unique_id=791114066]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210, -25, 210, -25, 210, 25, -210, 25)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform03" unique_id=1282909086]
+z_index = 1
+color = Color(0.22, 0.48, 0.3, 1)
+polygon = PackedVector2Array(-210, -25, 210, -25, 210, 25, -210, 25)
+
+[node name="Platform04" type="StaticBody2D" parent="Objects" unique_id=726588587]
+position = Vector2(2380, 610)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform04" unique_id=271804379]
+shape = SubResource("P4")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform04" unique_id=374412686]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-230, -25, 230, -25, 230, 25, -230, 25)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform04" unique_id=1959754673]
+z_index = 1
+color = Color(0.22, 0.48, 0.3, 1)
+polygon = PackedVector2Array(-230, -25, 230, -25, 230, 25, -230, 25)
+
+[node name="Platform05" type="StaticBody2D" parent="Objects" unique_id=2072826368]
+position = Vector2(3050, 790)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform05" unique_id=543566859]
+shape = SubResource("P5")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform05" unique_id=1239852072]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-210, -25, 210, -25, 210, 25, -210, 25)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform05" unique_id=1720407794]
+z_index = 1
+color = Color(0.22, 0.48, 0.3, 1)
+polygon = PackedVector2Array(-210, -25, 210, -25, 210, 25, -210, 25)
+
+[node name="Platform06" type="StaticBody2D" parent="Objects" unique_id=1286994896]
+position = Vector2(3650, 560)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Platform06" unique_id=2035006953]
+shape = SubResource("P6")
+
+[node name="Polygon2D" type="Polygon2D" parent="Objects/Platform06" unique_id=701132580]
+visible = false
+color = Color(0.12, 0.75, 0.9, 0.32)
+polygon = PackedVector2Array(-180, -25, 180, -25, 180, 25, -180, 25)
+
+[node name="Polygon2D_extra1" type="Polygon2D" parent="Objects/Platform06" unique_id=1007546920]
+z_index = 1
+color = Color(0.22, 0.48, 0.3, 1)
+polygon = PackedVector2Array(-180, -25, 180, -25, 180, 25, -180, 25)
+
+[node name="ParkourRouteTitle" type="Label" parent="." unique_id=1008561345]
+z_index = 30
+offset_left = 1450.0
+offset_top = 420.0
+offset_right = 2250.0
+offset_bottom = 470.0
+theme_override_colors/font_color = Color(0.75, 0.95, 0.62, 0.95)
+theme_override_font_sizes/font_size = 24
+text = "PARKOUR → RAÍCES PROFUNDAS"
+
+[node name="ParkourRouteHint" type="Label" parent="." unique_id=752451591]
+z_index = 30
+offset_left = 1450.0
+offset_top = 465.0
+offset_right = 2350.0
+offset_bottom = 505.0
+theme_override_colors/font_color = Color(0.9, 0.92, 0.84, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "Encadena saltos • sube por las raíces • llega al arco superior"
+
+[node name="TraversalStyle" type="Label" parent="." unique_id=1916846066]
+z_index = 25
+offset_left = 120.0
+offset_top = 126.0
+offset_right = 120.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.8, 0.9, 0.78, 0.92)
+theme_override_font_sizes/font_size = 18
+text = "TRAVESÍA: PARKOUR · SALTOS PRECISOS · RUTA ELEVADA"
+
+[node name="ParkourGateVisual" type="Polygon2D" parent="." unique_id=1240044126]
+z_index = 5
+position = Vector2(1930, 535)
+color = Color(0.48, 0.82, 0.38, 0.65)
+polygon = PackedVector2Array(-42, -125, 42, -125, 42, 125, -42, 125)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=305656585]
+position = Vector2(274.4, 1227.2)
+
+[node name="SpawnLeft" type="Marker2D" parent="." unique_id=1694824907]
+position = Vector2(221.6, 1227.2)
+
+[node name="SpawnRight" type="Marker2D" parent="." unique_id=672578937]
+position = Vector2(3838.4, 1227.2)
+
+[node name="SpawnTop" type="Marker2D" parent="." unique_id=1629653248]
+position = Vector2(1964, 593.6)
+
+[node name="SpawnBottom" type="Marker2D" parent="." unique_id=397371269]
+position = Vector2(1964, 1227.2)
+
+[node name="SecretZones" type="Node2D" parent="." unique_id=338409748]
+
+[node name="Secret01" type="Area2D" parent="SecretZones" unique_id=858370346]
+position = Vector2(3653.6, 694.4)
+collision_layer = 0
+script = ExtResource("3_secret")
+mensaje = "Zona secreta descubierta"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretZones/Secret01" unique_id=826317458]
+shape = SubResource("Secret")
+
+[node name="Secret02" type="Area2D" parent="SecretZones" unique_id=1610749741]
+position = Vector2(1898, 492.8)
+collision_layer = 0
+script = ExtResource("3_secret")
+mensaje = "Secreto superior descubierto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SecretZones/Secret02" unique_id=1767365211]
+shape = SubResource("Secret")
+
+[node name="CheckpointBosque" parent="." unique_id=1890121405 instance=ExtResource("v87_checkpoint")]
+position = Vector2(900, 1200)
+identificador = "checkpoint_bosque"
+mensaje = "PUNTO DE CONTROL: BOSQUE DEL AMANECER"
+
+[node name="Exits" type="Node2D" parent="." unique_id=1660548863]
+script = ExtResource("98_exit_visuals")
+
+[node name="ExitRight" type="Area2D" parent="Exits" unique_id=1022613708]
+position = Vector2(4023.2, 1227.2)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/bosque_sendero.tscn"
+spawn_destino = "SpawnLeft"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitRight" unique_id=1570700552]
+shape = SubResource("Exit")
+
+[node name="Visual" type="Polygon2D" parent="Exits/ExitRight" unique_id=1938816678]
+visible = false
+color = Color(0.2, 1, 0.35, 0.45)
+polygon = PackedVector2Array(-40, -130, 40, -130, 40, 130, -40, 130)
+
+[node name="ExitTop" type="Area2D" parent="Exits" unique_id=1052470082]
+position = Vector2(1930, 535)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/bosque_profundidad.tscn"
+spawn_destino = "SpawnBottom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitTop" unique_id=1104543649]
+shape = SubResource("Exit")
+
+[node name="Visual" type="Polygon2D" parent="Exits/ExitTop" unique_id=1651917162]
+visible = false
+color = Color(0.2, 1, 0.35, 0.45)
+polygon = PackedVector2Array(-40, -130, 40, -130, 40, 130, -40, 130)
+
+[node name="WorldRoute_0_Z03_ALTERNATIVA" type="Area2D" parent="Exits" unique_id=1729857212]
+position = Vector2(3600, 1167.2)
+collision_layer = 0
+script = ExtResource("world_route")
+escena_destino = "res://scenes/rooms/bosque/bosque_profundidad.tscn"
+habilidad_requerida = "Salto Celestial"
+nombre_ruta = "Z03 ALTERNATIVA"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/WorldRoute_0_Z03_ALTERNATIVA" unique_id=1887666316]
+shape = SubResource("WorldGate0_8841")
+
+[node name="RaizRoute_01" type="Area2D" parent="Exits" unique_id=2010315384]
+position = Vector2(3200, 1120)
+collision_layer = 0
+script = ExtResource("world_route")
+escena_destino = "res://scenes/rooms/bosque/bosque_profundidad.tscn"
+spawn_destino = "SpawnBottom"
+habilidad_requerida = "Impulso de Raíz"
+nombre_ruta = "IMPULSO DE RAÍZ • ATAJO PROFUNDO"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/RaizRoute_01" unique_id=923808167]
+shape = SubResource("Exit")
+
+[node name="player" parent="." unique_id=2057984287 instance=ExtResource("1_player")]
+position = Vector2(274.4, 1227.2)
+
+[node name="BossSpawn" type="Marker2D" parent="." unique_id=1561123777]
+position = Vector2(2096, 1256)
+
+[node name="BosqueEnemy01" parent="." instance=ExtResource("enemy_basic_v118")]
+position = Vector2(1050, 1300)
+
+[node name="BosqueEnemy02" parent="." instance=ExtResource("enemy_basic_v118")]
+position = Vector2(1450, 1300)
+
+[node name="BosqueEnemy03" parent="." instance=ExtResource("enemy_basic_v118")]
+position = Vector2(1850, 1300)
+
+[node name="HabilidadPickup_double_jump_v69" parent="." unique_id=1797579090 instance=ExtResource("ability_pickup_v69")]
+position = Vector2(700, 1142.2)
+
+[node name="BosqueRestoration" type="Node2D" parent="." unique_id=2098765440]
+script = ExtResource("bosque_restoration_script")
+z_index = 3
+
+[node name="HeartFragment01" type="Area2D" parent="." unique_id=2098765441]
+position = Vector2(1180, 1120)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+script = ExtResource("heart_fragment_script")
+identificador = "corazon_fragmento_01"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeartFragment01" unique_id=2098765442]
+shape = SubResource("HeartFragmentShape")
+
+[node name="Memoria01" type="Area2D" parent="." unique_id=2098765443]
+position = Vector2(1780, 1115)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+script = ExtResource("lore_note_script")
+identificador = "memoria_01"
+titulo = "MEMORIA 01"
+texto = "Misha despertó en un bosque que ya no respiraba igual.\n\nEntre las raíces encontró un pequeño fragmento de luz. Cuando lo tocó, escuchó un solo latido: Tum. Después, silencio.\n\nAlgo dentro del mundo todavía estaba intentando despertar."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Memoria01"]
+shape = SubResource("LoreNoteShape")
+
+[node name="Luma" parent="." unique_id=2098765432 instance=ExtResource("luma_npc")]
+position = Vector2(650, 1320)
+
+[node name="MetSysRoom" parent="." instance=ExtResource("met_sys_room")]

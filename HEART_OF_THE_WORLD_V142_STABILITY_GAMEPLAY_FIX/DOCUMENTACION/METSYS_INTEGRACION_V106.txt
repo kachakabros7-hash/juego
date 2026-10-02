@@ -1,0 +1,16 @@
+HEART OF THE WORLD — Integración MetSys V106
+
+Se añadió MetSys 1.5 como capa de mapa/seguimiento, sin reemplazar GameState ni MapManager.
+
+- Addon: res://addons/MetroidvaniaSystem/
+- Configuración: res://MetSysSettings.tres
+- Datos de mapa: res://scenes/rooms/MapData.txt
+- Puente runtime: res://scripts/map/metsys_bridge.gd
+- RoomInstance añadido a las 73 escenas de rooms existentes.
+- M se mantiene como mapa de HEART OF THE WORLD; el addon no sustituye la UI actual.
+- GameState/SaveManager siguen siendo la fuente de verdad del progreso del juego.
+- La integración está preparada para usar el editor de MetSys y su API sin romper las transiciones existentes.
+
+Revisión adicional:
+- Se detectó que player.tscn tenía referencias de texturas inexistentes y subrecursos AtlasTexture apuntando a IDs ausentes.
+- Se corrige en esta versión usando los sprites individuales existentes de assets/Warrior/Individual Sprite.

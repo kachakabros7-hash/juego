@@ -1,0 +1,49 @@
+HEART OF THE WORLD — V105
+GUARDIÁN DE LA PIEDRA: INTEGRACIÓN RUNTIME
+
+Esta etapa continúa desde V104 y conserva el proyecto existente.
+
+OBJETIVO
+Convertir el diseño del Guardián de la Piedra en una implementación jugable
+usando el framework de bosses/enemigos existente, sin sustituir sistemas.
+
+REQUISITOS DE IMPLEMENTACIÓN
+- 900 HP iniciales.
+- 3 fases.
+- Barra de vida visible durante el encuentro.
+- Contacto/ataques conectados al sistema de daño existente.
+- Fase 1: golpe de suelo + embestida + caída de rocas.
+- Fase 2: cristales/ondas minerales + proyectiles.
+- Fase 3: combinación de ataques y arena alterada.
+- Muerte y recompensa conectadas al GameState/guardado existente.
+- Entrada y salida conectadas a la sala de Cavernas.
+- No modificar animaciones de Misha.
+- No modificar Luma.
+- No añadir NPC ni enemigos nuevos.
+
+ARCHIVOS DE REFERENCIA ENCONTRADOS
+scripts/map/map_manager.gd
+scripts/map/map_display.gd
+scripts/enemies/boss_guardian.gd
+scripts/rooms/mini_room_enhancer.gd
+scripts/rooms/zone_level_design.gd
+scripts/rooms/exit_visuals.gd
+scripts/rooms/platform_visuals.gd
+scripts/rooms/boss_arena.gd
+scenes/boss_guardian.tscn
+scenes/rooms/bosque/cueva_secreta.tscn
+scenes/rooms/bosque/jefe_guardian.tscn
+scenes/rooms/bosque/pantano_sombrio.tscn
+scenes/rooms/bosque/bosque_entrada.tscn
+scenes/rooms/bosque/cavernas.tscn
+scenes/rooms/bosque/torre_abismo.tscn
+scenes/rooms/zonas/jefe_guardian/jefe_guardian_desafio.tscn
+scenes/rooms/zonas/jefe_guardian/jefe_guardian_pasaje.tscn
+scenes/rooms/zonas/jefe_guardian/jefe_guardian_recompensa.tscn
+scenes/rooms/zonas/jefe_guardian/jefe_guardian_secreta.tscn
+scenes/rooms/zonas/bosque_entrada/bosque_entrada_antesala.tscn
+
+NOTA DE SEGURIDAD
+La integración automática completa requiere confirmar las APIs concretas del
+framework existente. Esta versión añade el plan runtime y no reemplaza scripts
+a ciegas. Godot no fue ejecutado en este entorno.

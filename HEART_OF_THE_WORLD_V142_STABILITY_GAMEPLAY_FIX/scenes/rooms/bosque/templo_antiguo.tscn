@@ -1,0 +1,196 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" path="res://scripts/rooms/room_transition.gd" id="2_transition"]
+[ext_resource type="Script" path="res://scripts/rooms/exit_visuals.gd" id="3_exit"]
+[ext_resource type="Script" path="res://scripts/rooms/platform_visuals.gd" id="4_platforms"]
+[ext_resource type="Script" path="res://scripts/rooms/zone6_temple.gd" id="5_env"]
+[ext_resource type="Script" path="res://scripts/rooms/route_navigation.gd" id="6_nav"]
+[ext_resource type="Script" path="res://scripts/rooms/room_camera_bounds.gd" id="7_cam"]
+[ext_resource type="Script" path="res://scripts/rooms/zone_route_polish.gd" id="8_polish"]
+[ext_resource type="Script" path="res://scripts/rooms/route_safety.gd" id="9_safety"]
+
+[ext_resource type="Script" path="res://scripts/rooms/world_route.gd" id="world_route"]
+[sub_resource type="RectangleShape2D" id="G"]
+size = Vector2(4600, 100)
+[sub_resource type="RectangleShape2D" id="W"]
+size = Vector2(100, 1800)
+[sub_resource type="RectangleShape2D" id="P1"]
+size = Vector2(620, 50)
+[sub_resource type="RectangleShape2D" id="P2"]
+size = Vector2(420, 50)
+[sub_resource type="RectangleShape2D" id="P3"]
+size = Vector2(520, 50)
+[sub_resource type="RectangleShape2D" id="P4"]
+size = Vector2(360, 50)
+[sub_resource type="RectangleShape2D" id="P5"]
+size = Vector2(480, 50)
+[sub_resource type="RectangleShape2D" id="P6"]
+size = Vector2(300, 50)
+[sub_resource type="RectangleShape2D" id="ExitV"]
+size = Vector2(120, 330)
+
+
+[sub_resource type="RectangleShape2D" id="WorldGate0_8642"]
+size = Vector2(90, 180)
+[node name="Room" type="Node2D"]
+[node name="V70LevelDesign" type="Node2D" parent="."]
+script = ExtResource("v70_level")
+
+[node name="Environment" type="Node2D" parent="."]
+script = ExtResource("5_env")
+
+[node name="RoutePolish" type="Node2D" parent="."]
+script = ExtResource("8_polish")
+width = 4600.0
+height = 2600.0
+accent = Color(0.82, 0.66, 0.32, 0.55)
+title = "ZONA 06 — RUINAS ANTIGUAS"
+subtitle = "CORREDOR PRINCIPAL · ATAJOS · SALA CENTRAL"
+
+[node name="CameraBounds" type="Node" parent="."]
+script = ExtResource("7_cam")
+limit_left = 0
+limit_top = 0
+limit_right = 4600
+limit_bottom = 2600
+
+[node name="RouteSafety" type="Node" parent="."]
+script = ExtResource("9_safety")
+limite_caida = 280.0
+
+[node name="Navigation" type="Node2D" parent="."]
+script = ExtResource("6_nav")
+room_width = 4600.0
+room_height = 2600.0
+directions = ["Z05 LAGO", "Z07 CIUDAD"]
+
+[node name="Objects" type="Node2D" parent="."]
+script = ExtResource("4_platforms")
+
+[node name="Ground" type="StaticBody2D" parent="Objects"]
+position = Vector2(2300, 2390)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Ground"]
+shape = SubResource("G")
+[node name="WallLeft" type="StaticBody2D" parent="Objects"]
+position = Vector2(50, 1450)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallLeft"]
+shape = SubResource("W")
+[node name="WallRight" type="StaticBody2D" parent="Objects"]
+position = Vector2(4550, 1450)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/WallRight"]
+shape = SubResource("W")
+
+[node name="Main01" type="StaticBody2D" parent="Objects"]
+position = Vector2(620, 2040)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Main01"]
+shape = SubResource("P1")
+[node name="Main02" type="StaticBody2D" parent="Objects"]
+position = Vector2(1370, 1870)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Main02"]
+shape = SubResource("P2")
+[node name="Main03" type="StaticBody2D" parent="Objects"]
+position = Vector2(2080, 2010)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Main03"]
+shape = SubResource("P3")
+[node name="Main04" type="StaticBody2D" parent="Objects"]
+position = Vector2(2810, 1820)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Main04"]
+shape = SubResource("P4")
+[node name="Main05" type="StaticBody2D" parent="Objects"]
+position = Vector2(3500, 1960)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Main05"]
+shape = SubResource("P5")
+[node name="Main06" type="StaticBody2D" parent="Objects"]
+position = Vector2(4200, 1780)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Main06"]
+shape = SubResource("P6")
+
+[node name="UpperLeft" type="StaticBody2D" parent="Objects"]
+position = Vector2(850, 1250)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/UpperLeft"]
+shape = SubResource("P5")
+[node name="UpperMid" type="StaticBody2D" parent="Objects"]
+position = Vector2(1750, 1040)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/UpperMid"]
+shape = SubResource("P3")
+[node name="UpperCenter" type="StaticBody2D" parent="Objects"]
+position = Vector2(2450, 820)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/UpperCenter"]
+shape = SubResource("P4")
+[node name="UpperRight" type="StaticBody2D" parent="Objects"]
+position = Vector2(3230, 1110)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/UpperRight"]
+shape = SubResource("P5")
+[node name="UpperExit" type="StaticBody2D" parent="Objects"]
+position = Vector2(3950, 920)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/UpperExit"]
+shape = SubResource("P2")
+
+[node name="LowerLeft" type="StaticBody2D" parent="Objects"]
+position = Vector2(900, 2240)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/LowerLeft"]
+shape = SubResource("P4")
+[node name="LowerCenter" type="StaticBody2D" parent="Objects"]
+position = Vector2(1650, 2210)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/LowerCenter"]
+shape = SubResource("P5")
+[node name="LowerRight" type="StaticBody2D" parent="Objects"]
+position = Vector2(3300, 2240)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/LowerRight"]
+shape = SubResource("P4")
+
+[ext_resource type="PackedScene" path="res://scenes/checkpoint.tscn" id="10_checkpoint"]
+[ext_resource type="Script" path="res://scripts/rooms/zone_level_design.gd" id="v70_level"]
+[ext_resource type="PackedScene" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="met_sys_room"]
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(280, 2240)
+[node name="SpawnLeft" type="Marker2D" parent="."]
+position = Vector2(220, 2200)
+[node name="SpawnRight" type="Marker2D" parent="."]
+position = Vector2(4350, 1700)
+
+
+[node name="CheckpointTemplo" parent="." instance=ExtResource("10_checkpoint")]
+position = Vector2(2350, 2180)
+identificador = "checkpointtemplo"
+
+[node name="Exits" type="Node2D" parent="."]
+script = ExtResource("3_exit")
+[node name="ExitLeft" type="Area2D" parent="Exits"]
+position = Vector2(70, 2200)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/lago_oscuro.tscn"
+spawn_destino = "SpawnRight"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitLeft"]
+shape = SubResource("ExitV")
+
+[node name="ExitRight" type="Area2D" parent="Exits"]
+position = Vector2(4530, 1700)
+collision_layer = 0
+script = ExtResource("2_transition")
+escena_destino = "res://scenes/rooms/bosque/ciudad_perdida.tscn"
+spawn_destino = "SpawnLeft"
+habilidad_requerida = "Impulso Espectral"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitRight"]
+shape = SubResource("ExitV")
+
+[node name="player" parent="." instance=ExtResource("1_player")]
+position = Vector2(280, 2240)
+
+[node name="WorldRoute_0_Z07_CIUDAD" type="Area2D" parent="Exits"]
+position = Vector2(4020.0, 2180.0)
+collision_layer = 0
+collision_mask = 1
+script = ExtResource("world_route")
+escena_destino = "res://scenes/rooms/bosque/ciudad_perdida.tscn"
+spawn_destino = "SpawnLeft"
+habilidad_requerida = "Impulso Espectral"
+nombre_ruta = "Z07 CIUDAD"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/WorldRoute_0_Z07_CIUDAD"]
+shape = SubResource("WorldGate0_8642")
+
+[node name="MetSysRoom" parent="." instance=ExtResource("met_sys_room")]

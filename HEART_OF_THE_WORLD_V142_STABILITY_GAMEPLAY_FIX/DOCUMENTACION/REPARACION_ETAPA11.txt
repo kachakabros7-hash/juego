@@ -1,0 +1,10 @@
+Misha: Corazón del Mundo - Reparación de parser
+Base: Misha_Corazon_del_Mundo_v70_Reparado
+Corrección principal:
+- scripts/player/ranged_attack.gd: se corrigió la indentación de `enfriamiento = 0.25`, que había quedado dentro del `match` y provocaba el Parser Error de la línea 94.
+Se conservaron los recursos y sistemas existentes.
+Validación estática:
+- ZIP de origen íntegro.
+- 51 scripts GDScript inspeccionados.
+- No se detectaron otras asignaciones con la misma estructura de match en los bloques revisados.
+- Referencias res:// explícitas comprobadas: solo queda una ruta dinámica con %s, que no se puede validar como archivo literal.

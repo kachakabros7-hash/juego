@@ -1,0 +1,1 @@
+V103 — Combate de Cavernas implementado. 4 Polillas de Ceniza con controlador volador existente y 2 Tejedores del Eco con onda horizontal propia. Se mantienen Misha, Luma, mapa, guardado, habilidades y las 12 zonas. Revisión estática; Godot no fue ejecutado.
